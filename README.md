@@ -10,9 +10,12 @@ YTtracker is a Chrome extension that tracks your total watch time on YouTube.
 
 ## Installation
 
-1. Download the extension from the Chrome Web Store.
-2. Click on the extension icon in the Chrome toolbar.
-3. Start tracking your YouTube watch time!
+1. Download the extension from the [repository](https://github.com/manaskocharekar/YTtracker).
+2. Unzip the downloaded file.
+3. Open Chrome and go to `chrome://extensions/`.
+4. Enable "Developer mode" by clicking the toggle switch in the top right corner.
+5. Click on "Load unpacked" and select the unzipped folder.
+6. The extension will be added to your browser, and you can start tracking your YouTube watch time!
 
 ## Usage
 

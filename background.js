@@ -1,10 +1,13 @@
 let watchTimes = {}; // Track time per tab
 
-chrome.storage.local.get("trackingStart", (data) => {
-    if (!data.trackingStart) {
-        chrome.storage.local.set({ trackingStart: Date.now() });
-    }
+chrome.runtime.onInstalled.addListener(() => {
+    chrome.storage.local.get(["trackingStart", "watchTime"], (data) => {
+        if (!data.trackingStart) {
+            chrome.storage.local.set({ trackingStart: Date.now(), watchTime: 0 });
+        }
+    });
 });
+
 chrome.runtime.onMessage.addListener((message, sender) => {
     if (message.type === "updateWatchTime") {
         let tabId = sender.tab.id;
@@ -26,5 +29,11 @@ chrome.tabs.query({ url: "https://www.youtube.com/*" }, (tabs) => {
             target: { tabId: tab.id },
             files: ["content.js"]
         });
+    }
+});
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "resetWatchTime") {
+        chrome.storage.local.set({ watchTime: 0, trackingStart: Date.now() });
     }
 });

@@ -1,5 +1,10 @@
 let watchTimes = {}; // Track time per tab
 
+chrome.storage.local.get("trackingStart", (data) => {
+    if (!data.trackingStart) {
+        chrome.storage.local.set({ trackingStart: Date.now() });
+    }
+});
 chrome.runtime.onMessage.addListener((message, sender) => {
     if (message.type === "updateWatchTime") {
         let tabId = sender.tab.id;

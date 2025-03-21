@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial update
     updateTime();
 
-    // Update every 5 seconds
+    // Update every second
     setInterval(updateTime, 1000);
 
     // Reset button functionality
